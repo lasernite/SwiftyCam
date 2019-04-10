@@ -193,7 +193,7 @@ open class SwiftyCamViewController: UIViewController {
 
     /// Sets whether or not app should display prompt to app settings if audio/video permission is denied
     /// If set to false, delegate function will be called to handle exception
-    public var shouldPrompToAppSettings       = true
+    public var shouldPrompToAppSettings       = false
 
     /// Video will be recorded to this folder
     public var outputFolder: String           = NSTemporaryDirectory()
@@ -869,21 +869,21 @@ open class SwiftyCamViewController: UIViewController {
 	fileprivate func promptToAppSettings() {
 		// prompt User with UIAlertView
 
-		DispatchQueue.main.async(execute: { [unowned self] in
-			let message = NSLocalizedString("AVCam doesn't have permission to use the camera, please change privacy settings", comment: "Alert message when the user has denied access to the camera")
-			let alertController = UIAlertController(title: "AVCam", message: message, preferredStyle: .alert)
-			alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
-			alertController.addAction(UIAlertAction(title: NSLocalizedString("Settings", comment: "Alert button to open Settings"), style: .default, handler: { action in
-				if #available(iOS 10.0, *) {
-					UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
-				} else {
-					if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-						UIApplication.shared.openURL(appSettings)
-					}
-				}
-			}))
-			self.present(alertController, animated: true, completion: nil)
-		})
+//        DispatchQueue.main.async(execute: { [unowned self] in
+//            let message = NSLocalizedString("AVCam doesn't have permission to use the camera, please change privacy settings", comment: "Alert message when the user has denied access to the camera")
+//            let alertController = UIAlertController(title: "AVCam", message: message, preferredStyle: .alert)
+//            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
+//            alertController.addAction(UIAlertAction(title: NSLocalizedString("Settings", comment: "Alert button to open Settings"), style: .default, handler: { action in
+//                if #available(iOS 10.0, *) {
+//                    UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
+//                } else {
+//                    if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+//                        UIApplication.shared.openURL(appSettings)
+//                    }
+//                }
+//            }))
+//            self.present(alertController, animated: true, completion: nil)
+//        })
 	}
 
 	/**
