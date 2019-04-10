@@ -170,7 +170,7 @@ open class SwiftyCamViewController: UIViewController {
 
 	/// Set default launch camera
 
-	public var defaultCamera                   = CameraSelection.rear
+	public var defaultCamera                   = CameraSelection.front
 
 	/// Sets wether the taken photo or video should be oriented according to the device orientation
 
